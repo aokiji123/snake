@@ -11,7 +11,7 @@ dirs = {'W': True, 'S': True, 'A': True, 'D': True}
 snake_length = 1
 snake = [(x, y)]
 dx, dy = 0, 0
-fps = 7
+fps = 5
 
 pygame.init()
 sc = pygame.display.set_mode([RES, RES])
