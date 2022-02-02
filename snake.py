@@ -26,7 +26,17 @@ while True:
     y += dy * SIZE
     snake.append((x, y))
     snake = snake[-snake_length:]
-
+    #eating apple
+    if snake[-1] == apple:
+        apple = randrange(0, RES, SIZE), randrange(0, RES, SIZE)
+        snake_length += 1
+        fps += 1
+    # game ending (game over)
+    if x < 0 or x > RES - SIZE or y < 0 or y > RES - SIZE:
+        break 
+    if len(snake) != len(set(snake)):
+        break
+    
     pygame.display.flip()
     clock.tick(fps)
 
