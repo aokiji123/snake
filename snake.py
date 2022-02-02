@@ -1,4 +1,4 @@
-from ast import While
+
 import pygame
 from random import randrange
 
