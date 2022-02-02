@@ -7,6 +7,7 @@ SIZE = 50
 
 x,y = randrange(0, RES, SIZE), randrange(0, RES, SIZE)
 apple = randrange(0, RES, SIZE), randrange(0, RES, SIZE)
+dirs = {'W': True, 'S': True, 'A': True, 'D': True}
 snake_length = 1
 snake = [(x, y)]
 dx, dy = 0, 0
@@ -36,7 +37,7 @@ while True:
         break 
     if len(snake) != len(set(snake)):
         break
-    
+
     pygame.display.flip()
     clock.tick(fps)
 
@@ -46,11 +47,15 @@ while True:
 
     # snake control
     key = pygame.key.get_pressed()
-    if key[pygame.K_w]:
+    if key[pygame.K_w] and dirs['W']:
         dx, dy = 0, -1
-    if key[pygame.K_s]:
+        dirs = {'W': False, 'S': True, 'A': True, 'D': True}
+    if key[pygame.K_s] and dirs['S']:
         dx, dy = 0, 1
-    if key[pygame.K_a]:
+        dirs = {'W': True, 'S': False, 'A': True, 'D': True}
+    if key[pygame.K_a] and dirs['A']:
         dx, dy = -1, 0
-    if key[pygame.K_d]:
+        dirs = {'W': True, 'S': True, 'A': False, 'D': True}
+    if key[pygame.K_d] and dirs['D']:
         dx, dy = 1, 0
+        dirs = {'W': True, 'S': True, 'A': True, 'D': False}
